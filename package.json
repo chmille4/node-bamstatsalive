@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "bamstatsAlive": "bamstatsAlive/bamstatsAlive"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node build.js"
   },
   "author": "",
   "license": "ISC",
-  "scripts": {
-    "postinstall": "./build.sh"
-  },
   "dependencies": {
+    "get-installed-path": "^4.0.8",
     "node-bamtools": "git://github.com/chmille4/node-bamtools.git"
   }
 }
