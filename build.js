@@ -1,20 +1,16 @@
 
-
 const { spawn } = require('child_process');
-const { getInstalledPath } = require('get-installed-path')
 
+let pathToModule = require.resolve('node-bamtools')
+let path = require('path').dirname(pathToModule) + "/bamtools/"
 
-getInstalledPath('node-bamtools', {
-  local: true
-}).then((path) => {
-  console.log(path)
-  // let compile = spawn('BAMTOOLS=' + path + ' make',[],{cwd: './bamstatsAlive'});
-  let compile = spawn('make',[],{cwd: './bamstatsAlive', env:{'BAMTOOLS':path+'/bamtools/'}});
+// let compile = spawn('make',[],{cwd: './bamstatsAlive/', env:{'BAMTOOLS':path}});
 
-  compile.stdout.pipe(process.stdout);
-  compile.stderr.pipe(process.stderr);
+let compile = spawn('./build.sh',[path]);
 
-  compile.on('end', () => {
-  	console.log('compiling ... done')
-  })
+compile.stdout.pipe(process.stdout);
+compile.stderr.pipe(process.stderr);
+
+compile.on('end', () => {
+	console.log('compiling ... done')
 })
