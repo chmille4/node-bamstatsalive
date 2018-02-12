@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "get-installed-path": "^4.0.8",
     "node-bamtools": "git://github.com/chmille4/node-bamtools.git"
   }
 }
